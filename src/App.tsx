@@ -17,7 +17,7 @@ const isDev = import.meta.env.DEV;
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 print:bg-white">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/30 print:bg-white">
         {/* Header - hidden when printing */}
         <Header />
 

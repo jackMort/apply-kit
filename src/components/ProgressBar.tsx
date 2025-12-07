@@ -24,8 +24,8 @@ export function ProgressBar({ steps, currentStep, onStepClick }: ProgressBarProp
                     index < currentStep
                       ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-500/25'
                       : index === currentStep
-                      ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white ring-4 ring-indigo-100 shadow-lg shadow-indigo-500/30 scale-110'
-                      : 'bg-slate-100 text-slate-400 hover:bg-slate-200'
+                      ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white ring-4 ring-indigo-100 dark:ring-indigo-900 shadow-lg shadow-indigo-500/30 scale-110'
+                      : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-600'
                   }
                   ${onStepClick ? 'cursor-pointer hover:scale-105' : 'cursor-default'}
                 `}
@@ -42,7 +42,7 @@ export function ProgressBar({ steps, currentStep, onStepClick }: ProgressBarProp
                 className={`
                   mt-4 text-xs font-medium text-center whitespace-nowrap
                   transition-colors duration-200
-                  ${index === currentStep ? 'text-indigo-600' : index < currentStep ? 'text-slate-600' : 'text-slate-400'}
+                  ${index === currentStep ? 'text-indigo-600 dark:text-indigo-400' : index < currentStep ? 'text-slate-600 dark:text-slate-300' : 'text-slate-400 dark:text-slate-500'}
                 `}
               >
                 {step}
@@ -51,7 +51,7 @@ export function ProgressBar({ steps, currentStep, onStepClick }: ProgressBarProp
 
             {/* Connector line */}
             {index < steps.length - 1 && (
-              <div className="flex-1 h-1 mx-3 mt-5 rounded-full bg-slate-100 overflow-hidden self-start">
+              <div className="flex-1 h-1 mx-3 mt-5 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden self-start">
                 <div
                   className={`h-full rounded-full transition-all duration-500 ${
                     index < currentStep

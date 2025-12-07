@@ -31,7 +31,7 @@ export function WizardLayout() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
           <Card variant="elevated" key={currentStep} animated className="!p-4 md:!p-6">
             <div className="mb-6 md:mb-8">
-              <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
+              <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 dark:from-slate-100 dark:to-slate-300 bg-clip-text text-transparent">
                 {stepNames[currentStep]}
               </h2>
               <div className="h-1 w-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-2 md:mt-3" />
@@ -41,7 +41,7 @@ export function WizardLayout() {
             <Outlet />
 
             {/* Desktop navigation */}
-            <div className="hidden md:flex justify-between mt-10 pt-6 border-t border-slate-100">
+            <div className="hidden md:flex justify-between mt-10 pt-6 border-t border-slate-100 dark:border-slate-700">
               <Button
                 onClick={prevStep}
                 variant="secondary"

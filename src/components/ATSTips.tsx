@@ -85,9 +85,9 @@ export function ATSTips({ data }: ATSTipsProps) {
   }, [tips]);
 
   const getScoreColor = () => {
-    if (score >= 80) return 'text-green-600';
-    if (score >= 60) return 'text-yellow-600';
-    return 'text-red-600';
+    if (score >= 80) return 'text-green-600 dark:text-green-400';
+    if (score >= 60) return 'text-yellow-600 dark:text-yellow-400';
+    return 'text-red-600 dark:text-red-400';
   };
 
   const getScoreBg = () => {
@@ -97,17 +97,17 @@ export function ATSTips({ data }: ATSTipsProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-4">
+    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-semibold text-slate-800">{t('ats.title')}</h3>
+        <h3 className="font-semibold text-slate-800 dark:text-slate-200">{t('ats.title')}</h3>
         <div className="flex items-center gap-2">
           <span className={`text-2xl font-bold ${getScoreColor()}`}>{score}</span>
-          <span className="text-sm text-slate-500">/100</span>
+          <span className="text-sm text-slate-500 dark:text-slate-400">/100</span>
         </div>
       </div>
 
       {/* Progress bar */}
-      <div className="h-2 bg-slate-100 rounded-full mb-4 overflow-hidden">
+      <div className="h-2 bg-slate-100 dark:bg-slate-700 rounded-full mb-4 overflow-hidden">
         <div
           className={`h-full rounded-full transition-all duration-500 ${getScoreBg()}`}
           style={{ width: `${score}%` }}
@@ -120,9 +120,9 @@ export function ATSTips({ data }: ATSTipsProps) {
           <div
             key={tip.id}
             className={`flex items-start gap-2 text-sm p-2 rounded-lg ${
-              tip.type === 'success' ? 'bg-green-50 text-green-700' :
-              tip.type === 'warning' ? 'bg-yellow-50 text-yellow-700' :
-              'bg-red-50 text-red-700'
+              tip.type === 'success' ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300' :
+              tip.type === 'warning' ? 'bg-yellow-50 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300' :
+              'bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300'
             }`}
           >
             {tip.type === 'success' && (

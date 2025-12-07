@@ -14,8 +14,8 @@ export function Tag({ children, onRemove, variant = 'default' }: TagProps) {
         transition-all duration-200
         ${
           variant === 'default'
-            ? 'bg-indigo-50 text-indigo-700 border border-indigo-100 hover:bg-indigo-100'
-            : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300'
+            ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800 hover:bg-indigo-100 dark:hover:bg-indigo-900/50'
+            : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-600'
         }
       `}
     >
@@ -23,7 +23,7 @@ export function Tag({ children, onRemove, variant = 'default' }: TagProps) {
       {onRemove && (
         <button
           onClick={onRemove}
-          className="ml-0.5 p-0.5 rounded-full hover:bg-indigo-200/50 transition-colors"
+          className="ml-0.5 p-0.5 rounded-full hover:bg-indigo-200/50 dark:hover:bg-indigo-700/50 transition-colors"
           type="button"
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

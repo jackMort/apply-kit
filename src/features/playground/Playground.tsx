@@ -15,27 +15,27 @@ export function Playground() {
   const TemplateComponent = getTemplateComponent(selectedTemplate);
 
   return (
-    <div className="min-h-screen bg-slate-100">
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-900">
       {/* Toolbar */}
-      <div className="bg-white border-b border-slate-200 sticky top-0 z-50">
+      <div className="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50">
         <div className="max-w-[1800px] mx-auto px-4 py-3">
           <div className="flex items-center justify-between flex-wrap gap-4">
             {/* Left: Logo and title */}
             <div className="flex items-center gap-3">
               <span className="text-xl">🛠</span>
-              <h1 className="font-bold text-slate-800">Template Playground</h1>
-              <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded">DEV</span>
+              <h1 className="font-bold text-slate-800 dark:text-slate-100">Template Playground</h1>
+              <span className="text-xs bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded">DEV</span>
             </div>
 
             {/* Center: Selectors */}
             <div className="flex items-center gap-4">
               {/* Template selector */}
               <div className="flex items-center gap-2">
-                <label className="text-sm text-slate-600">Template:</label>
+                <label className="text-sm text-slate-600 dark:text-slate-400">Template:</label>
                 <select
                   value={selectedTemplate}
                   onChange={(e) => setSelectedTemplate(e.target.value)}
-                  className="border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white"
+                  className="border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700 dark:text-slate-100"
                 >
                   {templates.map(t => (
                     <option key={t.id} value={t.id}>{t.name}</option>
@@ -45,14 +45,14 @@ export function Playground() {
 
               {/* Preset selector */}
               <div className="flex items-center gap-2">
-                <label className="text-sm text-slate-600">Data:</label>
+                <label className="text-sm text-slate-600 dark:text-slate-400">Data:</label>
                 <select
                   value={selectedPreset}
                   onChange={(e) => {
                     setSelectedPreset(e.target.value);
                     setCustomData(null);
                   }}
-                  className="border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white"
+                  className="border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700 dark:text-slate-100"
                 >
                   {presets.map(p => (
                     <option key={p.id} value={p.id}>{p.name}</option>
@@ -67,7 +67,7 @@ export function Playground() {
               <button
                 onClick={() => setShowGrid(!showGrid)}
                 className={`p-2 rounded-lg transition-colors ${
-                  showGrid ? 'bg-teal-100 text-teal-700' : 'hover:bg-slate-100 text-slate-600'
+                  showGrid ? 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300' : 'hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400'
                 }`}
                 title="Toggle grid overlay"
               >
@@ -79,7 +79,7 @@ export function Playground() {
               {/* Print preview */}
               <button
                 onClick={() => window.print()}
-                className="p-2 rounded-lg hover:bg-slate-100 text-slate-600"
+                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400"
                 title="Print preview"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,7 +89,7 @@ export function Playground() {
 
               {/* Scale slider */}
               <div className="flex items-center gap-2">
-                <span className="text-sm text-slate-600">{Math.round(scale * 100)}%</span>
+                <span className="text-sm text-slate-600 dark:text-slate-400">{Math.round(scale * 100)}%</span>
                 <input
                   type="range"
                   min="0.3"
@@ -105,7 +105,7 @@ export function Playground() {
 
           {/* Preset description */}
           {currentPreset && (
-            <p className="text-xs text-slate-500 mt-2">{currentPreset.description}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">{currentPreset.description}</p>
           )}
         </div>
       </div>
@@ -148,7 +148,7 @@ export function Playground() {
       </div>
 
       {/* Quick template switcher - bottom bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-3 print:hidden">
+      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 p-3 print:hidden">
         <div className="flex justify-center gap-2">
           {templates.map(t => (
             <button
@@ -157,8 +157,8 @@ export function Playground() {
               className={`
                 px-4 py-2 rounded-lg text-sm font-medium transition-all
                 ${selectedTemplate === t.id
-                  ? 'bg-teal-500 text-white shadow-lg'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  ? 'bg-indigo-500 text-white shadow-lg'
+                  : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
                 }
               `}
             >

@@ -20,7 +20,7 @@ export function CoursesLanguagesStep() {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-medium text-gray-900 mb-4">
+        <h3 className="text-lg font-medium text-slate-900 dark:text-slate-100 mb-4">
           {t('courses.title')}
         </h3>
 
@@ -46,14 +46,14 @@ export function CoursesLanguagesStep() {
       </div>
 
       <div>
-        <h3 className="text-lg font-medium text-gray-900 mb-4">
+        <h3 className="text-lg font-medium text-slate-900 dark:text-slate-100 mb-4">
           {t('languages.title')}
         </h3>
 
         {cv.languages.map((lang) => (
           <div
             key={lang.id}
-            className="flex items-center gap-4 mb-3 p-3 bg-gray-50 rounded-lg"
+            className="flex items-center gap-4 mb-3 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg"
           >
             <div className="flex-1">
               <Input
@@ -66,7 +66,7 @@ export function CoursesLanguagesStep() {
               <select
                 value={lang.level}
                 onChange={(e) => updateLanguage(lang.id, { level: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
+                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
               >
                 <option value="">{t('languages.level')}</option>
                 {languageLevels.map((level) => (
@@ -78,7 +78,7 @@ export function CoursesLanguagesStep() {
             </div>
             <button
               onClick={() => removeLanguage(lang.id)}
-              className="text-red-500 hover:text-red-700"
+              className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

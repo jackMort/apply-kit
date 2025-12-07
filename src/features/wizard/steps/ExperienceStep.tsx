@@ -26,7 +26,7 @@ export function ExperienceStep() {
   return (
     <div className="space-y-6">
       {cv.experience.length === 0 && (
-        <div className="text-center py-8 text-gray-500">
+        <div className="text-center py-8 text-slate-500 dark:text-slate-400">
           <p>{t('experience.title')}</p>
           <p className="text-sm">{t('experience.add')}</p>
         </div>
@@ -35,15 +35,15 @@ export function ExperienceStep() {
       {cv.experience.map((exp, index) => (
         <div
           key={exp.id}
-          className="p-4 border border-gray-200 rounded-lg space-y-4"
+          className="p-4 border border-slate-200 dark:border-slate-700 rounded-lg space-y-4"
         >
           <div className="flex justify-between items-center">
-            <span className="text-sm font-medium text-gray-500">
+            <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
               #{index + 1}
             </span>
             <button
               onClick={() => removeExperience(exp.id)}
-              className="text-red-500 hover:text-red-700 text-sm"
+              className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 text-sm"
             >
               {t('common.remove')}
             </button>
@@ -80,7 +80,7 @@ export function ExperienceStep() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
               {t('experience.duties')}
             </label>
             <div className="flex flex-wrap gap-2 mb-2">

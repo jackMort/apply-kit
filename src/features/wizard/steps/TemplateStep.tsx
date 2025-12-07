@@ -28,8 +28,8 @@ export function TemplateStep() {
               text-left
               ${
                 selectedTemplate === id
-                  ? 'border-teal-500 bg-teal-50 ring-2 ring-teal-200'
-                  : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                  ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 ring-2 ring-indigo-200 dark:ring-indigo-800'
+                  : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800'
               }
             `}
           >
@@ -43,19 +43,19 @@ export function TemplateStep() {
               <div className="w-16 h-20 bg-white rounded shadow-lg flex flex-col p-2">
                 <div className={`h-4 ${templateColors[id]} rounded mb-1`} />
                 <div className="space-y-1 flex-1">
-                  <div className="h-1 bg-gray-200 rounded w-full" />
-                  <div className="h-1 bg-gray-200 rounded w-3/4" />
-                  <div className="h-1 bg-gray-200 rounded w-full" />
-                  <div className="h-1 bg-gray-200 rounded w-1/2" />
+                  <div className="h-1 bg-slate-200 rounded w-full" />
+                  <div className="h-1 bg-slate-200 rounded w-3/4" />
+                  <div className="h-1 bg-slate-200 rounded w-full" />
+                  <div className="h-1 bg-slate-200 rounded w-1/2" />
                 </div>
               </div>
             </div>
 
-            <h3 className="font-semibold text-gray-900">{t(`template.${id}`)}</h3>
-            <p className="text-sm text-gray-500">{t(`template.${id}Desc`)}</p>
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100">{t(`template.${id}`)}</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400">{t(`template.${id}Desc`)}</p>
 
             {selectedTemplate === id && (
-              <div className="mt-2 flex items-center text-teal-600 text-sm font-medium">
+              <div className="mt-2 flex items-center text-indigo-600 dark:text-indigo-400 text-sm font-medium">
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>

@@ -25,7 +25,7 @@ export function PersonalStep() {
         <div className="flex-shrink-0">
           <div
             onClick={() => fileInputRef.current?.click()}
-            className="w-32 h-32 rounded-full bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-teal-500 transition-colors overflow-hidden"
+            className="w-32 h-32 rounded-full bg-slate-100 dark:bg-slate-700 border-2 border-dashed border-slate-300 dark:border-slate-600 flex items-center justify-center cursor-pointer hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors overflow-hidden"
           >
             {cv.personal.photo ? (
               <img
@@ -34,7 +34,7 @@ export function PersonalStep() {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="text-center text-gray-400">
+              <div className="text-center text-slate-400 dark:text-slate-500">
                 <svg className="w-8 h-8 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
@@ -52,7 +52,7 @@ export function PersonalStep() {
           {cv.personal.photo && (
             <button
               onClick={() => updatePersonal({ photo: undefined })}
-              className="mt-2 text-sm text-red-500 hover:text-red-700 w-full text-center"
+              className="mt-2 text-sm text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 w-full text-center"
             >
               {t('common.remove')}
             </button>

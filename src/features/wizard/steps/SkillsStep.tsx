@@ -14,7 +14,7 @@ function SkillLevel({ level, onChange }: { level: number; onChange: (level: numb
           className={`w-6 h-6 rounded-full transition-all duration-200 ${
             n <= level
               ? 'bg-gradient-to-r from-indigo-500 to-purple-500 shadow-sm'
-              : 'bg-slate-200 hover:bg-slate-300'
+              : 'bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 dark:hover:bg-slate-500'
           }`}
           title={`Level ${n}`}
         />
@@ -46,7 +46,7 @@ export function SkillsStep() {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-medium text-slate-800 mb-4">
+        <h3 className="text-lg font-medium text-slate-800 dark:text-slate-200 mb-4">
           {t('skills.hard')}
         </h3>
 
@@ -54,9 +54,9 @@ export function SkillsStep() {
           {cv.skills.hard.map((skill) => (
             <div
               key={skill.id}
-              className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100"
+              className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700"
             >
-              <span className="font-medium text-slate-700">{skill.name}</span>
+              <span className="font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
               <div className="flex items-center gap-4">
                 <SkillLevel
                   level={skill.level}
@@ -64,7 +64,7 @@ export function SkillsStep() {
                 />
                 <button
                   onClick={() => removeHardSkill(skill.id)}
-                  className="p-1 text-slate-400 hover:text-red-500 transition-colors"
+                  className="p-1 text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-colors"
                   type="button"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,7 +90,7 @@ export function SkillsStep() {
       </div>
 
       <div>
-        <h3 className="text-lg font-medium text-slate-800 mb-4">
+        <h3 className="text-lg font-medium text-slate-800 dark:text-slate-200 mb-4">
           {t('skills.soft')}
         </h3>
 
