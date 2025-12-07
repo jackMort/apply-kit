@@ -1,76 +1,21 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Button } from './Button';
+import { useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
-import { LanguageSwitcher } from './LanguageSwitcher';
-import { ThemeToggle } from './ThemeToggle';
-import { MobileNav } from './MobileNav';
-import { useCVStore } from '../store';
-
-const isDev = import.meta.env.DEV;
+import { SettingsDropdown } from './SettingsDropdown';
 
 export function Header() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { t } = useTranslation();
-  const { fillWithDemoData, reset } = useCVStore();
-
-  const isWizard = location.pathname.startsWith('/wizard');
-  const isPlayground = location.pathname === '/playground';
-
-  const handleReset = () => {
-    reset();
-    navigate('/wizard/personal');
-  };
 
   return (
     <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/60 dark:border-slate-700/60 sticky top-0 z-50 print:hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 md:py-4 flex justify-between items-center">
-        {/* Logo - smaller on mobile */}
+        {/* Logo */}
         <button onClick={() => navigate('/wizard/personal')} className="focus:outline-none">
           <Logo size="sm" className="md:hidden" />
           <Logo size="md" className="hidden md:flex" />
         </button>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-3">
-          {isWizard && (
-            <>
-              <Button onClick={fillWithDemoData} variant="ghost" size="sm">
-                {t('common.fillDemo')}
-              </Button>
-              <Button onClick={handleReset} variant="ghost" size="sm">
-                {t('common.reset')}
-              </Button>
-              <div className="w-px h-6 bg-slate-200 dark:bg-slate-700" />
-            </>
-          )}
-          {isDev && (
-            <>
-              <Button
-                onClick={() => navigate('/playground')}
-                variant="ghost"
-                size="sm"
-                className={isPlayground ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' : ''}
-              >
-                Playground
-              </Button>
-              <div className="w-px h-6 bg-slate-200 dark:bg-slate-700" />
-            </>
-          )}
-          <ThemeToggle />
-          <LanguageSwitcher />
-        </div>
-
-        {/* Mobile nav */}
-        {isWizard && (
-          <MobileNav
-            onFillDemo={fillWithDemoData}
-            onReset={handleReset}
-            onPlayground={() => navigate('/playground')}
-            showPlayground={isDev}
-          />
-        )}
+        {/* Settings */}
+        <SettingsDropdown />
       </div>
     </header>
   );
