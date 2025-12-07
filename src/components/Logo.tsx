@@ -35,10 +35,10 @@ export function Logo({ size = 'md' }: LogoProps) {
       </div>
       <div className="flex flex-col">
         <span className={`${text} font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent`}>
-          CV Builder
+          Apply Kit
         </span>
         <span className="text-xs text-slate-500 font-medium -mt-0.5">
-          Professional Resume Creator
+          CV & Cover Letter Creator
         </span>
       </div>
     </div>
