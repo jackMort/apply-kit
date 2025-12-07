@@ -2,6 +2,8 @@
 
 Modern CV and cover letter creator with professional templates.
 
+**[Live Demo](https://apply-kit.vercel.app)**
+
 ## Features
 
 - **6-step wizard** - guided CV creation process
