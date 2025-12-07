@@ -88,8 +88,14 @@ export function MinimalTemplate({ data }: MinimalTemplateProps) {
               Umiejętności
             </h2>
             <div className="flex flex-wrap gap-2">
-              {[...data.skills.hard, ...data.skills.soft].map((skill) => (
-                <span key={skill} className="text-sm text-gray-600 border border-gray-200 px-3 py-1 rounded-full">
+              {data.skills.hard.map((skill) => (
+                <span key={skill.id} className="text-sm text-gray-600 border border-gray-200 px-3 py-1 rounded-full flex items-center gap-2">
+                  {skill.name}
+                  <span className="text-xs text-gray-400">{skill.level}/5</span>
+                </span>
+              ))}
+              {data.skills.soft.map((skill) => (
+                <span key={skill} className="text-sm text-gray-500 border border-gray-100 px-3 py-1 rounded-full">
                   {skill}
                 </span>
               ))}

@@ -6,3 +6,5 @@ export { ProgressBar } from './ProgressBar';
 export { Tag } from './Tag';
 export { LanguageSwitcher } from './LanguageSwitcher';
 export { Logo } from './Logo';
+export { QRCode } from './QRCode';
+export { ATSTips } from './ATSTips';

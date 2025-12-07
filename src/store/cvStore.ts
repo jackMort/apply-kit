@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { v4 as uuidv4 } from 'uuid';
-import type { CVData, CoverLetterData, TemplateId, Education, Experience, Language } from '../types';
+import type { CVData, CoverLetterData, TemplateId, Education, Experience, Language, Skill } from '../types';
 
 interface CVStore {
   // Data
@@ -26,8 +26,11 @@ interface CVStore {
   removeDuty: (experienceId: string, index: number) => void;
 
   // Skills
-  addSkill: (type: 'hard' | 'soft', skill: string) => void;
-  removeSkill: (type: 'hard' | 'soft', skill: string) => void;
+  addHardSkill: (name: string) => void;
+  updateHardSkill: (id: string, data: Partial<Skill>) => void;
+  removeHardSkill: (id: string) => void;
+  addSoftSkill: (skill: string) => void;
+  removeSoftSkill: (skill: string) => void;
 
   // Courses
   addCourse: (course: string) => void;
@@ -125,7 +128,15 @@ const demoCV: CVData = {
     },
   ],
   skills: {
-    hard: ['React', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Git', 'REST API', 'Node.js'],
+    hard: [
+      { id: uuidv4(), name: 'React', level: 5 },
+      { id: uuidv4(), name: 'TypeScript', level: 4 },
+      { id: uuidv4(), name: 'JavaScript', level: 5 },
+      { id: uuidv4(), name: 'HTML/CSS', level: 5 },
+      { id: uuidv4(), name: 'Git', level: 4 },
+      { id: uuidv4(), name: 'REST API', level: 4 },
+      { id: uuidv4(), name: 'Node.js', level: 3 },
+    ],
     soft: ['Komunikatywność', 'Praca w zespole', 'Rozwiązywanie problemów', 'Kreatywność'],
   },
   courses: [
@@ -231,23 +242,55 @@ export const useCVStore = create<CVStore>()(
         })),
 
       // Skills
-      addSkill: (type, skill) =>
+      addHardSkill: (name) =>
         set((state) => ({
           cv: {
             ...state.cv,
             skills: {
               ...state.cv.skills,
-              [type]: [...state.cv.skills[type], skill],
+              hard: [...state.cv.skills.hard, { id: uuidv4(), name, level: 3 }],
             },
           },
         })),
-      removeSkill: (type, skill) =>
+      updateHardSkill: (id, data) =>
         set((state) => ({
           cv: {
             ...state.cv,
             skills: {
               ...state.cv.skills,
-              [type]: state.cv.skills[type].filter((s) => s !== skill),
+              hard: state.cv.skills.hard.map((s) =>
+                s.id === id ? { ...s, ...data } : s
+              ),
+            },
+          },
+        })),
+      removeHardSkill: (id) =>
+        set((state) => ({
+          cv: {
+            ...state.cv,
+            skills: {
+              ...state.cv.skills,
+              hard: state.cv.skills.hard.filter((s) => s.id !== id),
+            },
+          },
+        })),
+      addSoftSkill: (skill) =>
+        set((state) => ({
+          cv: {
+            ...state.cv,
+            skills: {
+              ...state.cv.skills,
+              soft: [...state.cv.skills.soft, skill],
+            },
+          },
+        })),
+      removeSoftSkill: (skill) =>
+        set((state) => ({
+          cv: {
+            ...state.cv,
+            skills: {
+              ...state.cv.skills,
+              soft: state.cv.skills.soft.filter((s) => s !== skill),
             },
           },
         })),
@@ -290,9 +333,9 @@ export const useCVStore = create<CVStore>()(
       // Template
       setTemplate: (template) => set({ selectedTemplate: template }),
 
-      // Navigation
-      setStep: (step) => set({ currentStep: step }),
-      nextStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
+      // Navigation (5 steps: 0-4)
+      setStep: (step) => set({ currentStep: Math.min(4, Math.max(0, step)) }),
+      nextStep: () => set((state) => ({ currentStep: Math.min(4, state.currentStep + 1) })),
       prevStep: () => set((state) => ({ currentStep: Math.max(0, state.currentStep - 1) })),
 
       // Cover Letter
@@ -309,12 +352,25 @@ export const useCVStore = create<CVStore>()(
           ...demoCV,
           education: demoCV.education.map(e => ({ ...e, id: uuidv4() })),
           experience: demoCV.experience.map(e => ({ ...e, id: uuidv4() })),
+          skills: {
+            hard: demoCV.skills.hard.map(s => ({ ...s, id: uuidv4() })),
+            soft: [...demoCV.skills.soft],
+          },
           languages: demoCV.languages.map(l => ({ ...l, id: uuidv4() })),
         }
       }),
     }),
     {
       name: 'cv-builder-data',
+      merge: (persistedState, currentState) => {
+        const persisted = persistedState as Partial<CVStore> | undefined;
+        return {
+          ...currentState,
+          ...persisted,
+          // Clamp currentStep to valid range (0-4) after removing template step
+          currentStep: Math.min(4, Math.max(0, persisted?.currentStep ?? 0)),
+        };
+      },
     }
   )
 );

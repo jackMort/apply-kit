@@ -61,9 +61,19 @@ export function ProfessionalTemplate({ data }: ProfessionalTemplateProps) {
               <h2 className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-4 border-b border-slate-700 pb-2">
                 Umiejętności
               </h2>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {data.skills.hard.map((skill) => (
-                  <div key={skill} className="text-sm text-slate-300">{skill}</div>
+                  <div key={skill.id} className="text-sm">
+                    <div className="flex justify-between text-slate-300 mb-1">
+                      <span>{skill.name}</span>
+                    </div>
+                    <div className="h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-blue-400 rounded-full"
+                        style={{ width: `${(skill.level / 5) * 100}%` }}
+                      />
+                    </div>
+                  </div>
                 ))}
               </div>
             </section>

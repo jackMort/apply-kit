@@ -79,7 +79,8 @@
   "preview": {
     "edit": "Edytuj",
     "print": "Drukuj / Zapisz PDF",
-    "coverLetter": "List motywacyjny"
+    "coverLetter": "List motywacyjny",
+    "changeTemplate": "Zmień szablon"
   },
   "coverLetter": {
     "title": "Generator listu motywacyjnego",
@@ -100,5 +101,20 @@
     "cancel": "Anuluj",
     "fillDemo": "Wypełnij przykładowymi danymi",
     "reset": "Wyczyść"
+  },
+  "ats": {
+    "title": "Analiza ATS",
+    "noName": "Dodaj imię i nazwisko",
+    "noEmail": "Dodaj adres email",
+    "noPhone": "Zalecane: dodaj numer telefonu",
+    "noExperience": "Zalecane: dodaj doświadczenie zawodowe",
+    "noDuties": "Dodaj obowiązki do każdego stanowiska",
+    "goodExperience": "Doświadczenie wygląda dobrze!",
+    "noEducation": "Zalecane: dodaj wykształcenie",
+    "goodEducation": "Wykształcenie uzupełnione",
+    "fewSkills": "Dodaj więcej umiejętności (min. 5)",
+    "goodSkills": "Dobra liczba umiejętności",
+    "goodSkillLevels": "Wysoki poziom umiejętności",
+    "goodLanguages": "Języki obce dodane"
   }
 }

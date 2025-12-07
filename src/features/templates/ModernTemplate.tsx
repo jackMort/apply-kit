@@ -1,4 +1,5 @@
 import type { CVData } from '../../types';
+import { QRCode } from '../../components';
 
 interface ModernTemplateProps {
   data: CVData;
@@ -96,7 +97,7 @@ export function ModernTemplate({ data }: ModernTemplateProps) {
         </main>
 
         {/* Sidebar */}
-        <aside className="bg-gray-800 text-white p-6">
+        <aside className="bg-gray-800 text-white p-6 flex flex-col">
           {/* Photo */}
           {data.personal.photo && (
             <div className="mb-6">
@@ -130,7 +131,17 @@ export function ModernTemplate({ data }: ModernTemplateProps) {
               </h2>
               <div className="space-y-2">
                 {data.skills.hard.map((skill) => (
-                  <div key={skill} className="text-sm">{skill}</div>
+                  <div key={skill.id} className="text-sm">
+                    <div className="flex justify-between mb-1">
+                      <span>{skill.name}</span>
+                    </div>
+                    <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-teal-400 rounded-full transition-all duration-300"
+                        style={{ width: `${(skill.level / 5) * 100}%` }}
+                      />
+                    </div>
+                  </div>
                 ))}
               </div>
             </section>
@@ -166,6 +177,11 @@ export function ModernTemplate({ data }: ModernTemplateProps) {
               </div>
             </section>
           )}
+
+          {/* QR Code - at the bottom */}
+          <div className="mt-auto pt-4 flex justify-center">
+            <QRCode data={data.personal} size={80} />
+          </div>
         </aside>
       </div>
     </div>

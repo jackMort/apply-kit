@@ -130,13 +130,32 @@ export function CreativeTemplate({ data }: CreativeTemplateProps) {
               <h2 className="text-sm font-bold text-purple-600 uppercase tracking-wide mb-3">
                 Umiejętności
               </h2>
-              <div className="flex flex-wrap gap-1">
-                {[...data.skills.hard, ...data.skills.soft].map((skill) => (
-                  <span key={skill} className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              {data.skills.hard.length > 0 && (
+                <div className="space-y-2 mb-3">
+                  {data.skills.hard.map((skill) => (
+                    <div key={skill.id} className="text-xs">
+                      <div className="flex justify-between text-purple-700 mb-1">
+                        <span>{skill.name}</span>
+                      </div>
+                      <div className="h-1.5 bg-purple-100 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-purple-500 rounded-full"
+                          style={{ width: `${(skill.level / 5) * 100}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {data.skills.soft.length > 0 && (
+                <div className="flex flex-wrap gap-1">
+                  {data.skills.soft.map((skill) => (
+                    <span key={skill} className="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-full">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              )}
             </section>
           )}
 

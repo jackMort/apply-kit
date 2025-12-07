@@ -30,12 +30,18 @@ export interface Language {
   level: string;
 }
 
+export interface Skill {
+  id: string;
+  name: string;
+  level: number; // 1-5
+}
+
 export interface CVData {
   personal: PersonalData;
   education: Education[];
   experience: Experience[];
   skills: {
-    hard: string[];
+    hard: Skill[];
     soft: string[];
   };
   courses: string[];

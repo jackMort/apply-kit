@@ -80,9 +80,30 @@ export function ClassicTemplate({ data }: ClassicTemplateProps) {
           <h2 className="text-lg font-bold text-gray-900 uppercase tracking-wide mb-4 border-b border-gray-300 pb-2">
             Umiejętności
           </h2>
-          <div className="text-sm text-gray-700">
-            {[...data.skills.hard, ...data.skills.soft].join(' • ')}
-          </div>
+          {data.skills.hard.length > 0 && (
+            <div className="grid grid-cols-2 gap-x-8 gap-y-2 mb-3">
+              {data.skills.hard.map((skill) => (
+                <div key={skill.id} className="flex items-center justify-between text-sm">
+                  <span className="text-gray-700">{skill.name}</span>
+                  <div className="flex gap-0.5">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <span
+                        key={n}
+                        className={`w-2 h-2 rounded-full ${
+                          n <= skill.level ? 'bg-gray-800' : 'bg-gray-200'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          {data.skills.soft.length > 0 && (
+            <div className="text-sm text-gray-600 italic">
+              {data.skills.soft.join(' • ')}
+            </div>
+          )}
         </section>
       )}
 

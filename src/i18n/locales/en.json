@@ -79,7 +79,8 @@
   "preview": {
     "edit": "Edit",
     "print": "Print / Save PDF",
-    "coverLetter": "Cover Letter"
+    "coverLetter": "Cover Letter",
+    "changeTemplate": "Change Template"
   },
   "coverLetter": {
     "title": "Cover Letter Generator",
@@ -100,5 +101,20 @@
     "cancel": "Cancel",
     "fillDemo": "Fill with demo data",
     "reset": "Clear"
+  },
+  "ats": {
+    "title": "ATS Analysis",
+    "noName": "Add your full name",
+    "noEmail": "Add your email address",
+    "noPhone": "Recommended: add phone number",
+    "noExperience": "Recommended: add work experience",
+    "noDuties": "Add duties to each position",
+    "goodExperience": "Experience looks great!",
+    "noEducation": "Recommended: add education",
+    "goodEducation": "Education completed",
+    "fewSkills": "Add more skills (min. 5)",
+    "goodSkills": "Good number of skills",
+    "goodSkillLevels": "High skill proficiency",
+    "goodLanguages": "Languages added"
   }
 }
