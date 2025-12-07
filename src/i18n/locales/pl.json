@@ -1,0 +1,104 @@
+{
+  "app": {
+    "title": "CV Builder",
+    "subtitle": "Stwórz profesjonalne CV w kilka minut"
+  },
+  "wizard": {
+    "steps": {
+      "personal": "Dane osobowe",
+      "education": "Wykształcenie",
+      "experience": "Doświadczenie",
+      "skills": "Umiejętności",
+      "courses": "Kursy i języki",
+      "template": "Szablon"
+    },
+    "next": "Dalej",
+    "prev": "Wstecz",
+    "finish": "Podgląd CV"
+  },
+  "personal": {
+    "title": "Dane osobowe",
+    "photo": "Zdjęcie",
+    "uploadPhoto": "Kliknij aby dodać zdjęcie",
+    "changePhoto": "Zmień zdjęcie",
+    "name": "Imię i nazwisko",
+    "email": "Email",
+    "phone": "Telefon",
+    "location": "Lokalizacja"
+  },
+  "education": {
+    "title": "Wykształcenie",
+    "add": "Dodaj wykształcenie",
+    "school": "Szkoła / Uczelnia",
+    "degree": "Kierunek / Tytuł",
+    "startDate": "Data rozpoczęcia",
+    "endDate": "Data zakończenia",
+    "description": "Opis (opcjonalnie)"
+  },
+  "experience": {
+    "title": "Doświadczenie zawodowe",
+    "add": "Dodaj doświadczenie",
+    "company": "Firma",
+    "position": "Stanowisko",
+    "startDate": "Data rozpoczęcia",
+    "endDate": "Data zakończenia",
+    "duties": "Obowiązki",
+    "addDuty": "Dodaj obowiązek (Enter)"
+  },
+  "skills": {
+    "title": "Umiejętności",
+    "hard": "Umiejętności twarde",
+    "hardPlaceholder": "np. React, TypeScript (Enter)",
+    "soft": "Umiejętności miękkie",
+    "softPlaceholder": "np. Komunikatywność, Praca zespołowa (Enter)"
+  },
+  "courses": {
+    "title": "Kursy i certyfikaty",
+    "add": "Dodaj kurs (Enter)",
+    "placeholder": "np. Certyfikat AWS (Enter)"
+  },
+  "languages": {
+    "title": "Języki obce",
+    "add": "Dodaj język",
+    "name": "Język",
+    "level": "Poziom"
+  },
+  "template": {
+    "title": "Wybierz szablon",
+    "modern": "Nowoczesny",
+    "modernDesc": "Dwukolumnowy layout z akcentami kolorowymi",
+    "classic": "Klasyczny",
+    "classicDesc": "Tradycyjny, jednokolumnowy układ",
+    "minimal": "Minimalistyczny",
+    "minimalDesc": "Prosty i elegancki design",
+    "creative": "Kreatywny",
+    "creativeDesc": "Kolorowy header z ikonami",
+    "professional": "Profesjonalny",
+    "professionalDesc": "Ciemny sidebar, korporacyjny styl"
+  },
+  "preview": {
+    "edit": "Edytuj",
+    "print": "Drukuj / Zapisz PDF",
+    "coverLetter": "List motywacyjny"
+  },
+  "coverLetter": {
+    "title": "Generator listu motywacyjnego",
+    "subtitle": "Wypełnij informacje o stanowisku i wygeneruj szablon lub napisz własną treść.",
+    "position": "Stanowisko",
+    "company": "Firma (opcjonalnie)",
+    "jobDescription": "Opis stanowiska / wymagania (opcjonalnie)",
+    "content": "Treść listu motywacyjnego",
+    "generate": "Wygeneruj szablon",
+    "back": "Wróć do CV",
+    "preview": "Podgląd listu",
+    "regarding": "Dotyczy",
+    "application": "Aplikacja na stanowisko"
+  },
+  "common": {
+    "remove": "Usuń",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "fillDemo": "Wypełnij przykładowymi danymi",
+    "reset": "Wyczyść"
+  }
+}

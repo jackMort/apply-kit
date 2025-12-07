@@ -1,0 +1,104 @@
+{
+  "app": {
+    "title": "CV Builder",
+    "subtitle": "Create a professional CV in minutes"
+  },
+  "wizard": {
+    "steps": {
+      "personal": "Personal Info",
+      "education": "Education",
+      "experience": "Experience",
+      "skills": "Skills",
+      "courses": "Courses & Languages",
+      "template": "Template"
+    },
+    "next": "Next",
+    "prev": "Back",
+    "finish": "Preview CV"
+  },
+  "personal": {
+    "title": "Personal Information",
+    "photo": "Photo",
+    "uploadPhoto": "Click to add photo",
+    "changePhoto": "Change photo",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location"
+  },
+  "education": {
+    "title": "Education",
+    "add": "Add education",
+    "school": "School / University",
+    "degree": "Degree / Field of study",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "description": "Description (optional)"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "add": "Add experience",
+    "company": "Company",
+    "position": "Position",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "duties": "Duties",
+    "addDuty": "Add duty (Enter)"
+  },
+  "skills": {
+    "title": "Skills",
+    "hard": "Hard skills",
+    "hardPlaceholder": "e.g. React, TypeScript (Enter)",
+    "soft": "Soft skills",
+    "softPlaceholder": "e.g. Communication, Teamwork (Enter)"
+  },
+  "courses": {
+    "title": "Courses and Certificates",
+    "add": "Add course (Enter)",
+    "placeholder": "e.g. AWS Certificate (Enter)"
+  },
+  "languages": {
+    "title": "Languages",
+    "add": "Add language",
+    "name": "Language",
+    "level": "Level"
+  },
+  "template": {
+    "title": "Choose a template",
+    "modern": "Modern",
+    "modernDesc": "Two-column layout with color accents",
+    "classic": "Classic",
+    "classicDesc": "Traditional, single-column layout",
+    "minimal": "Minimal",
+    "minimalDesc": "Simple and elegant design",
+    "creative": "Creative",
+    "creativeDesc": "Colorful header with icons",
+    "professional": "Professional",
+    "professionalDesc": "Dark sidebar, corporate style"
+  },
+  "preview": {
+    "edit": "Edit",
+    "print": "Print / Save PDF",
+    "coverLetter": "Cover Letter"
+  },
+  "coverLetter": {
+    "title": "Cover Letter Generator",
+    "subtitle": "Fill in the job details and generate a template or write your own content.",
+    "position": "Position",
+    "company": "Company (optional)",
+    "jobDescription": "Job description / requirements (optional)",
+    "content": "Cover letter content",
+    "generate": "Generate template",
+    "back": "Back to CV",
+    "preview": "Preview letter",
+    "regarding": "Regarding",
+    "application": "Application for position"
+  },
+  "common": {
+    "remove": "Remove",
+    "save": "Save",
+    "cancel": "Cancel",
+    "fillDemo": "Fill with demo data",
+    "reset": "Clear"
+  }
+}
