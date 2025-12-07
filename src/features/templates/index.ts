@@ -3,3 +3,7 @@ export { ClassicTemplate } from './ClassicTemplate';
 export { MinimalTemplate } from './MinimalTemplate';
 export { CreativeTemplate } from './CreativeTemplate';
 export { ProfessionalTemplate } from './ProfessionalTemplate';
+
+// Registry
+export { templates, getTemplate, getTemplateComponent, getTemplateIds } from './registry';
+export type { TemplateMeta } from './registry';

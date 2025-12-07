@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Button, Card, ProgressBar, ATSTips } from '../../components';
+import { Button, Card, ProgressBar, ATSTips, MobileProgress, BottomNav } from '../../components';
 import { useCVStore } from '../../store';
 import {
   PersonalStep,
@@ -35,48 +35,63 @@ export function Wizard({ onComplete }: WizardProps) {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6">
-      <Card variant="elevated" className="mb-6" animated>
-        <ProgressBar
-          steps={stepNames}
-          currentStep={currentStep}
-          onStepClick={setStep}
-        />
-      </Card>
+    <div className="pb-20 md:pb-0">
+      {/* Mobile Progress */}
+      <MobileProgress steps={stepNames} currentStep={currentStep} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
-        <Card variant="elevated" key={currentStep} animated>
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
-              {stepNames[currentStep]}
-            </h2>
-            <div className="h-1 w-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-3" />
-          </div>
-
-          <CurrentStepComponent />
-
-          <div className="flex justify-between mt-10 pt-6 border-t border-slate-100">
-            <Button
-              onClick={prevStep}
-              variant="secondary"
-              disabled={isFirstStep}
-            >
-              ← {t('wizard.prev')}
-            </Button>
-
-            <Button onClick={handleNext}>
-              {isLastStep ? t('wizard.finish') : `${t('wizard.next')} →`}
-            </Button>
-          </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Desktop Progress */}
+        <Card variant="elevated" className="mb-6 hidden md:block" animated>
+          <ProgressBar
+            steps={stepNames}
+            currentStep={currentStep}
+            onStepClick={setStep}
+          />
         </Card>
 
-        {/* ATS Tips Sidebar */}
-        <div className="hidden lg:block">
-          <div className="sticky top-24">
-            <ATSTips data={cv} />
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
+          <Card variant="elevated" key={currentStep} animated className="!p-4 md:!p-6">
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
+                {stepNames[currentStep]}
+              </h2>
+              <div className="h-1 w-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-2 md:mt-3" />
+            </div>
+
+            <CurrentStepComponent />
+
+            {/* Desktop navigation */}
+            <div className="hidden md:flex justify-between mt-10 pt-6 border-t border-slate-100">
+              <Button
+                onClick={prevStep}
+                variant="secondary"
+                disabled={isFirstStep}
+              >
+                ← {t('wizard.prev')}
+              </Button>
+
+              <Button onClick={handleNext}>
+                {isLastStep ? t('wizard.finish') : `${t('wizard.next')} →`}
+              </Button>
+            </div>
+          </Card>
+
+          {/* ATS Tips Sidebar - desktop only */}
+          <div className="hidden lg:block">
+            <div className="sticky top-24">
+              <ATSTips data={cv} />
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      <BottomNav
+        onPrev={prevStep}
+        onNext={handleNext}
+        isFirstStep={isFirstStep}
+        isLastStep={isLastStep}
+      />
     </div>
   );
 }

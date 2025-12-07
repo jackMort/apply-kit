@@ -1,5 +1,6 @@
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
+  className?: string;
 }
 
 const sizes = {
@@ -8,11 +9,11 @@ const sizes = {
   lg: { icon: 'w-12 h-12', text: 'text-2xl' },
 };
 
-export function Logo({ size = 'md' }: LogoProps) {
+export function Logo({ size = 'md', className = '' }: LogoProps) {
   const { icon, text } = sizes[size];
 
   return (
-    <div className="flex items-center gap-3">
+    <div className={`flex items-center gap-3 ${className}`}>
       <div className={`${icon} relative`}>
         {/* Background gradient circle */}
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl rotate-6 opacity-80" />
