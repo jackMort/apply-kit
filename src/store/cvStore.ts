@@ -8,7 +8,6 @@ interface CVStore {
   cv: CVData;
   coverLetter: CoverLetterData | null;
   selectedTemplate: TemplateId;
-  currentStep: number;
 
   // Personal
   updatePersonal: (data: Partial<CVData['personal']>) => void;
@@ -43,11 +42,6 @@ interface CVStore {
 
   // Template
   setTemplate: (template: TemplateId) => void;
-
-  // Navigation
-  setStep: (step: number) => void;
-  nextStep: () => void;
-  prevStep: () => void;
 
   // Cover Letter
   setCoverLetter: (data: CoverLetterData | null) => void;
@@ -157,7 +151,6 @@ export const useCVStore = create<CVStore>()(
       cv: initialCV,
       coverLetter: null,
       selectedTemplate: 'modern',
-      currentStep: 0,
 
       // Personal
       updatePersonal: (data) =>
@@ -333,11 +326,6 @@ export const useCVStore = create<CVStore>()(
       // Template
       setTemplate: (template) => set({ selectedTemplate: template }),
 
-      // Navigation (5 steps: 0-4)
-      setStep: (step) => set({ currentStep: Math.min(4, Math.max(0, step)) }),
-      nextStep: () => set((state) => ({ currentStep: Math.min(4, state.currentStep + 1) })),
-      prevStep: () => set((state) => ({ currentStep: Math.max(0, state.currentStep - 1) })),
-
       // Cover Letter
       setCoverLetter: (data) => set({ coverLetter: data }),
       updateCoverLetter: (data) =>
@@ -346,7 +334,7 @@ export const useCVStore = create<CVStore>()(
         })),
 
       // Reset & Demo
-      reset: () => set({ cv: initialCV, coverLetter: null, currentStep: 0 }),
+      reset: () => set({ cv: initialCV, coverLetter: null }),
       fillWithDemoData: () => set({
         cv: {
           ...demoCV,
@@ -362,15 +350,6 @@ export const useCVStore = create<CVStore>()(
     }),
     {
       name: 'cv-builder-data',
-      merge: (persistedState, currentState) => {
-        const persisted = persistedState as Partial<CVStore> | undefined;
-        return {
-          ...currentState,
-          ...persisted,
-          // Clamp currentStep to valid range (0-4) after removing template step
-          currentStep: Math.min(4, Math.max(0, persisted?.currentStep ?? 0)),
-        };
-      },
     }
   )
 );

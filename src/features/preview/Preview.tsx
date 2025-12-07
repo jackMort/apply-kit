@@ -1,16 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button, Card } from '../../components';
 import { useCVStore } from '../../store';
 import { templates, getTemplateComponent } from '../templates';
 import type { TemplateId } from '../../types';
 
-interface PreviewProps {
-  onEdit: () => void;
-  onCoverLetter: () => void;
-}
-
-export function Preview({ onEdit, onCoverLetter }: PreviewProps) {
+export function Preview() {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const { cv, selectedTemplate, setTemplate } = useCVStore();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -33,7 +30,7 @@ export function Preview({ onEdit, onCoverLetter }: PreviewProps) {
         <Card variant="elevated" className="!p-3 md:!p-4">
           {/* Mobile controls */}
           <div className="flex md:hidden justify-between items-center">
-            <Button onClick={onEdit} variant="secondary" size="sm">
+            <Button onClick={() => navigate('/wizard/personal')} variant="secondary" size="sm">
               ← {t('preview.edit')}
             </Button>
             <div className="flex gap-2">
@@ -52,7 +49,7 @@ export function Preview({ onEdit, onCoverLetter }: PreviewProps) {
 
           {/* Desktop controls */}
           <div className="hidden md:flex justify-between items-center">
-            <Button onClick={onEdit} variant="secondary">
+            <Button onClick={() => navigate('/wizard/personal')} variant="secondary">
               ← {t('preview.edit')}
             </Button>
             <div className="flex gap-3">
@@ -62,7 +59,7 @@ export function Preview({ onEdit, onCoverLetter }: PreviewProps) {
                 </svg>
                 {t('preview.changeTemplate')}
               </Button>
-              <Button onClick={onCoverLetter} variant="outline">
+              <Button onClick={() => navigate('/cover-letter')} variant="outline">
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>

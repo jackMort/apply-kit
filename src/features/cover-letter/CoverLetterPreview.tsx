@@ -1,13 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../components';
 import { useCVStore } from '../../store';
 
-interface CoverLetterPreviewProps {
-  onEdit: () => void;
-  onBack: () => void;
-}
-
-export function CoverLetterPreview({ onEdit, onBack }: CoverLetterPreviewProps) {
+export function CoverLetterPreview() {
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { cv, coverLetter } = useCVStore();
 
@@ -19,7 +16,7 @@ export function CoverLetterPreview({ onEdit, onBack }: CoverLetterPreviewProps) 
     return (
       <div className="max-w-6xl mx-auto p-4 text-center">
         <p className="text-gray-600">{t('coverLetter.title')}</p>
-        <Button className="mt-4" onClick={onEdit}>
+        <Button className="mt-4" onClick={() => navigate('/cover-letter')}>
           {t('coverLetter.generate')}
         </Button>
       </div>
@@ -37,11 +34,11 @@ export function CoverLetterPreview({ onEdit, onBack }: CoverLetterPreviewProps) 
     <div>
       {/* Controls - hidden when printing */}
       <div className="print:hidden max-w-6xl mx-auto mb-6 flex justify-between items-center px-4">
-        <Button onClick={onBack} variant="secondary">
+        <Button onClick={() => navigate('/preview')} variant="secondary">
           ← {t('coverLetter.back')}
         </Button>
         <div className="flex gap-2">
-          <Button onClick={onEdit} variant="secondary">
+          <Button onClick={() => navigate('/cover-letter')} variant="secondary">
             {t('preview.edit')}
           </Button>
           <Button onClick={handlePrint}>

@@ -1,38 +1,17 @@
+import { Outlet } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button, Card, ProgressBar, ATSTips, MobileProgress, BottomNav } from '../../components';
 import { useCVStore } from '../../store';
-import {
-  PersonalStep,
-  EducationStep,
-  ExperienceStep,
-  SkillsStep,
-  CoursesLanguagesStep,
-} from './steps';
+import { useWizardNavigation } from '../../hooks';
 
 const stepKeys = ['personal', 'education', 'experience', 'skills', 'courses'] as const;
-const stepComponents = [PersonalStep, EducationStep, ExperienceStep, SkillsStep, CoursesLanguagesStep];
 
-interface WizardProps {
-  onComplete: () => void;
-}
-
-export function Wizard({ onComplete }: WizardProps) {
+export function WizardLayout() {
   const { t } = useTranslation();
-  const { cv, currentStep, setStep, nextStep, prevStep } = useCVStore();
-
-  const CurrentStepComponent = stepComponents[currentStep];
-  const isFirstStep = currentStep === 0;
-  const isLastStep = currentStep === stepKeys.length - 1;
+  const { cv } = useCVStore();
+  const { currentStep, isFirstStep, isLastStep, nextStep, prevStep, goToStep } = useWizardNavigation();
 
   const stepNames = stepKeys.map((key) => t(`wizard.steps.${key}`));
-
-  const handleNext = () => {
-    if (isLastStep) {
-      onComplete();
-    } else {
-      nextStep();
-    }
-  };
 
   return (
     <div className="pb-20 md:pb-0">
@@ -45,7 +24,7 @@ export function Wizard({ onComplete }: WizardProps) {
           <ProgressBar
             steps={stepNames}
             currentStep={currentStep}
-            onStepClick={setStep}
+            onStepClick={goToStep}
           />
         </Card>
 
@@ -58,7 +37,8 @@ export function Wizard({ onComplete }: WizardProps) {
               <div className="h-1 w-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-2 md:mt-3" />
             </div>
 
-            <CurrentStepComponent />
+            {/* Step content rendered via Outlet */}
+            <Outlet />
 
             {/* Desktop navigation */}
             <div className="hidden md:flex justify-between mt-10 pt-6 border-t border-slate-100">
@@ -70,7 +50,7 @@ export function Wizard({ onComplete }: WizardProps) {
                 ← {t('wizard.prev')}
               </Button>
 
-              <Button onClick={handleNext}>
+              <Button onClick={nextStep}>
                 {isLastStep ? t('wizard.finish') : `${t('wizard.next')} →`}
               </Button>
             </div>
@@ -88,7 +68,7 @@ export function Wizard({ onComplete }: WizardProps) {
       {/* Mobile Bottom Navigation */}
       <BottomNav
         onPrev={prevStep}
-        onNext={handleNext}
+        onNext={nextStep}
         isFirstStep={isFirstStep}
         isLastStep={isLastStep}
       />

@@ -1,14 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button, Input, TextArea, Card } from '../../components';
 import { useCVStore } from '../../store';
 
-interface CoverLetterFormProps {
-  onPreview: () => void;
-  onBack: () => void;
-}
-
-export function CoverLetterForm({ onPreview, onBack }: CoverLetterFormProps) {
+export function CoverLetterForm() {
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { cv, coverLetter, setCoverLetter, updateCoverLetter } = useCVStore();
   const [position, setPosition] = useState(coverLetter?.position || '');
@@ -73,7 +70,7 @@ ${name}`;
         content,
       });
     }
-    onPreview();
+    navigate('/cover-letter/preview');
   };
 
   return (
@@ -127,7 +124,7 @@ ${name}`;
           />
 
           <div className="flex justify-between pt-4">
-            <Button variant="secondary" onClick={onBack}>
+            <Button variant="secondary" onClick={() => navigate('/preview')}>
               ← {t('coverLetter.back')}
             </Button>
             <Button onClick={handleSave} disabled={!content.trim()}>
