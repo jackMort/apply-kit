@@ -13,3 +13,4 @@ export { MobileProgress } from './MobileProgress';
 export { BottomNav } from './BottomNav';
 export { Header } from './Header';
 export { ThemeToggle } from './ThemeToggle';
+export { PhotoUpload } from './PhotoUpload';
