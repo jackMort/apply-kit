@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import {
   WizardLayout,
   PersonalStep,
@@ -10,6 +11,7 @@ import {
 import { Preview } from './features/preview';
 import { CoverLetterForm, CoverLetterPreview } from './features/cover-letter';
 import { Playground } from './features/playground';
+import { AIFloatingButton } from './features/ai';
 import { Header } from './components';
 
 const isDev = import.meta.env.DEV;
@@ -18,11 +20,29 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/30 print:bg-white">
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: 'rgb(30 41 59)',
+              color: 'rgb(226 232 240)',
+            },
+            error: {
+              duration: 5000,
+              iconTheme: {
+                primary: 'rgb(248 113 113)',
+                secondary: 'rgb(30 41 59)',
+              },
+            },
+          }}
+        />
         {/* Header - hidden when printing */}
         <Header />
 
         {/* Main content */}
         <main className="py-4 md:py-10 print:py-0">
+          <AIFloatingButton />
           <Routes>
             <Route path="/" element={<Navigate to="/wizard/personal" replace />} />
             <Route path="/wizard" element={<WizardLayout />}>

@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks';
 import { useCVStore } from '../store';
+import { AIKeyModal, hasApiKey } from '../features/ai';
 
 const isDev = import.meta.env.DEV;
 
@@ -20,7 +21,9 @@ export function SettingsDropdown() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [showLangOptions, setShowLangOptions] = useState(false);
+  const [showAIModal, setShowAIModal] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const isAIConfigured = hasApiKey();
 
   const isPlayground = location.pathname === '/playground';
   const currentLang = languages.find(l => l.code === i18n.language) || languages[0];
@@ -126,6 +129,22 @@ export function SettingsDropdown() {
             )}
           </div>
 
+          {/* AI Settings */}
+          <button
+            onClick={() => { setShowAIModal(true); setIsOpen(false); }}
+            className="w-full flex items-center justify-between px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <svg className="w-5 h-5 text-violet-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span className="text-sm text-slate-700 dark:text-slate-300">{t('ai.settings', 'AI Settings')}</span>
+            </div>
+            <span className={`text-xs ${isAIConfigured ? 'text-green-500' : 'text-slate-400'}`}>
+              {isAIConfigured ? '✓' : '—'}
+            </span>
+          </button>
+
           {/* Separator */}
           <div className="border-t border-slate-200 dark:border-slate-700" />
 
@@ -172,6 +191,11 @@ export function SettingsDropdown() {
             </>
           )}
         </div>
+      )}
+
+      {/* AI Key Modal */}
+      {showAIModal && (
+        <AIKeyModal onClose={() => setShowAIModal(false)} />
       )}
     </div>
   );
