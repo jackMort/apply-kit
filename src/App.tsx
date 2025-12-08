@@ -9,7 +9,6 @@ import {
   CoursesLanguagesStep,
 } from './features/wizard';
 import { Preview } from './features/preview';
-import { CoverLetterForm, CoverLetterPreview } from './features/cover-letter';
 import { Playground } from './features/playground';
 import { AIFloatingButton } from './features/ai';
 import { Header } from './components';
@@ -54,8 +53,9 @@ function App() {
               <Route path="courses" element={<CoursesLanguagesStep />} />
             </Route>
             <Route path="/preview" element={<Preview />} />
-            <Route path="/cover-letter" element={<CoverLetterForm />} />
-            <Route path="/cover-letter/preview" element={<CoverLetterPreview />} />
+            {/* Cover letter routes redirect to preview with cover letter tab */}
+            <Route path="/cover-letter" element={<Navigate to="/preview" replace />} />
+            <Route path="/cover-letter/preview" element={<Navigate to="/preview" replace />} />
             {isDev && <Route path="/playground" element={<Playground />} />}
             <Route path="*" element={<Navigate to="/wizard/personal" replace />} />
           </Routes>

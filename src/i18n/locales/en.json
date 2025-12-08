@@ -80,7 +80,17 @@
     "edit": "Edit",
     "print": "Print / Save PDF",
     "coverLetter": "Cover Letter",
-    "changeTemplate": "Change Template"
+    "changeTemplate": "Change Template",
+    "preview": "Preview",
+    "back": "Back to edit",
+    "fillNameEmail": "Fill in name and email",
+    "tabs": {
+      "cv": "CV",
+      "coverLetter": "Cover Letter"
+    },
+    "printCV": "Print CV",
+    "printLetter": "Print letter",
+    "printAll": "Print all"
   },
   "coverLetter": {
     "title": "Cover Letter Generator",

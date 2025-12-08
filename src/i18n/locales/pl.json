@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "CV Builder",
+    "title": "Kreator CV",
     "subtitle": "Stwórz profesjonalne CV w kilka minut"
   },
   "wizard": {
@@ -80,7 +80,17 @@
     "edit": "Edytuj",
     "print": "Drukuj / Zapisz PDF",
     "coverLetter": "List motywacyjny",
-    "changeTemplate": "Zmień szablon"
+    "changeTemplate": "Zmień szablon",
+    "preview": "Podgląd",
+    "back": "Wróć do edycji",
+    "fillNameEmail": "Uzupełnij imię i email",
+    "tabs": {
+      "cv": "CV",
+      "coverLetter": "List motywacyjny"
+    },
+    "printCV": "Drukuj CV",
+    "printLetter": "Drukuj list",
+    "printAll": "Drukuj wszystko"
   },
   "coverLetter": {
     "title": "Generator listu motywacyjnego",
